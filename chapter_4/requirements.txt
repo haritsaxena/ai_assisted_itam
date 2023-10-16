@@ -1,7 +1,10 @@
 # pip install uvicorn 
 # pip install fastapi
+###### Requirements without Version Specifiers ######
+python-dotenv
 
-uvicorn==0.11.8
-fastapi==0.61.1
-psycopg2-binary==2.9.6
-SQLAlchemy==2.0.9
+###### Requirements with Version Specifiers ######
+uvicorn==0.23.2
+fastapi==0.103.2
+psycopg2-binary==2.9.9
+SQLAlchemy==2.0.21

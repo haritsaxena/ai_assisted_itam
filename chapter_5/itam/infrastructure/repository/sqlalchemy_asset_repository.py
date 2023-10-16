@@ -20,7 +20,7 @@ class FundingDetailsModel(Base):
     depreciation_strategy_id = Column(Integer)
 
     def get_depreciation_strategy(self) -> DepreciationStrategy:
-        if self.depreciation_strategy_id is 1:
+        if self.depreciation_strategy_id == 1:
             return StraightLineDepreciationStrategy()
         else:
             return DoubleDecliningDepreciationStrategy()

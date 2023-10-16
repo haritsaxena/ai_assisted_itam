@@ -7,8 +7,8 @@
 create schema itam;
 
 -- create two users called itam_user and itam_admin. itam_user should be able to read from and write to the tables in the itam schema. itam_admin should be able to read from and write to the tables in the itam schema and create and drop tables in the itam schema.
-create user itam_user with password 'itam_user';
-create user itam_admin with password 'itam_admin';
+--create user itam_user with password 'itam_user';
+--create user itam_admin with password 'itam_admin';
 grant usage on schema itam to itam_user;
 grant usage on schema itam to itam_admin;
 grant select, insert, update, delete on all tables in schema itam to itam_user;
@@ -35,8 +35,8 @@ create sequence itam.depreciation_strategy_seq start 1 increment 1;
 -- answer: use the following command
 alter table itam.depreciation_strategy alter column "id" set default nextval('itam.depreciation_strategy_seq'::regclass);
 
-insert into depreciation_strategy (id, name, description) values (1, 'straight line', 'straight line');
-insert into depreciation_strategy (id, name, description) values (2, 'double declining balance', 'double declining balance');
+insert into itam.depreciation_strategy (id, name, description) values (1, 'straight line', 'straight line');
+insert into itam.depreciation_strategy (id, name, description) values (2, 'double declining balance', 'double declining balance');
 
 -- create a table called funding_details in the itam schema. the table should have the following columns: id (int), name (varchar),depreciation_strategy_id (int) and depreciation_rate (float). the table should have a primary key on id.
 -- depreciation_stategy_id is a foreign key to the depreciation_strategy table.
@@ -123,7 +123,7 @@ from (
         -- generate a random date between 1/1/2019 and 12/31/2022
         -- this does not work please fix
         -- '2019-01-01'::date + random() * ('2022-12-31'::date - '2019-01-01'::date) as purchase_date,
-        '2019-01-01'::date + (random() * (DATE '2022-12-31' - DATE '2019-01-01')::integer)::integer as purchase_date
+        '2019-01-01'::date + (random() * (DATE '2022-12-31' - DATE '2019-01-01')::integer)::integer as purchase_date,
         case
             when random() < 0.5 then 1
             else 2

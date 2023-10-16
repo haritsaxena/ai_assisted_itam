@@ -28,3 +28,6 @@ class SQLAlchemyAssetRepository(BaseRepository[Asset]):
     def delete(self, asset_id: int) -> None:
         self._session.query(Asset).filter(Asset.id == asset_id).delete()
         self._session.commit()
+    
+    def get_entities(self) -> list[Asset]:
+        return self._session.query(Asset).all()

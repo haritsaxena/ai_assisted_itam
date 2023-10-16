@@ -53,10 +53,10 @@ def from_asset(asset: Asset) -> AssetOut:
         id=asset.id,
         name=asset.name,
         asset_type=asset.category,
-        depreciation_strategy = str(asset.funding_details.depreciation_strategy) if asset.funding_details is not None else "",
+        depreciation_strategy =  '', #str(asset.funding_details.depreciation_strategy) if asset.funding_details is not None else "",
         useful_life=asset.useful_life,
         unit_cost=asset.cost,
-        depreciation_rate=asset.funding_details.depreciation_rate if asset.funding_details is not None else 0.0,
+        depreciation_rate=0.0, # asset.funding_details.depreciation_rate if asset.funding_details is not None else 0.0,
         salvage_value=asset.salvage_value,
         purchase_date=asset.purchase_date.strftime("%Y-%m-%d"),
     )

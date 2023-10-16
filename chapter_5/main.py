@@ -25,14 +25,14 @@ asset_manager = AssetManager(repository, mediator)
 asset_rest_adapter = AssetRestAdapter(asset_manager)
 asset_controller = AssetController(asset_rest_adapter)
 
-app.include_router(asset_controller.get_router())
+#app.include_router(asset_controller.get_router())
 
 #consumer = AssetLocationKafkaConsumer(mediator)
 #consumer.start_consumer()
 
-spark_adapter = AssetLocationSparkAdapter()
-spark_adapter.run()
+# spark_adapter = AssetLocationSparkAdapter()
+# spark_adapter.run()
 app.include_router(asset_controller.get_router())
 
 if __name__ == '__main__':
-    uvicorn.run(app, host='0.0.0.0', port=8000)
+    uvicorn.run(app, host='0.0.0.0', port=8002)
